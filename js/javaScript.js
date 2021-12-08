@@ -27,8 +27,8 @@ const btnJS = document.getElementById('btnJavaScript');
 const btnAJAX = document.getElementById('btnAJAX');
 
 toggleMenu(btnInicio, enunciado);
-toggleMenu(btnJS, ejerciciosJS);
-toggleMenu(btnAJAX, ejerciciosAJAX);
+// toggleMenu(btnJS, ejerciciosJS);
+// toggleMenu(btnAJAX, ejerciciosAJAX);
 
 /**************************************************************
  * Menu principal
@@ -172,7 +172,7 @@ url_input.addEventListener("change", function () { // Validacion url
         alert("Introduzca una url valida");
 });
 
-document.querySelector("#recurso").setAttribute("value", document.URL);
+document.querySelector("#recurso").setAttribute("value", document.URL + "assets/ejemplo.json");
 
 
 /**************************************************************
@@ -184,62 +184,10 @@ btmMostrarContenidos.addEventListener("click", function () {
     let url = document.querySelector("#recurso").value;
     document.querySelector("#contenidos").textContent = "";
     document.querySelector("#cabeceras").innerHTML = "";
-
     if (!urlCheck(url)) {
         alert("La url no es válida");
         document.querySelector("#contenidos").textContent = "";
     } else {
-
-        var json = {
-            "hey": "guy",
-            "anumber": 243,
-            "anobject": {
-                "whoa": "nuts",
-                "anarray": [1, 2, "thr<h1>ee"],
-                "more": "stuff"
-            },
-            "awesome": true,
-            "bogus": false,
-            "meaning": null,
-            "japanese": "明日がある。",
-            "link": "http://jsonview.com",
-            "notLink": "http://jsonview.com is great",
-            "multiline": ['Much like me, you make your way forward,',
-                'Walking with downturned eyes.',
-                'Well, I too kept mine lowered.',
-                'Passer-by, stop here, please.'].join("\n")
-        };
-
-        fetch(url)
-            .then(function (response) {
-                if (response.headers.get("Content-Type").search("text/html") !== -1) {
-                    console.log("El recurso es un documento HTML");
-                } else if (response.headers.get("Content-Type").search("text/css") !== -1) {
-                    console.log("El recurso es un documento CSS");
-                } else if (response.headers.get("Content-Type").search("text/javascript") !== -1) {
-                    console.log("El recurso es un documento JavaScript");
-                } else if (response.headers.get("Content-Type").search("application/json") !== -1) {
-                    console.log("El recurso es un documento JSON");
-                } else if (response.headers.get("Content-Type").search("application/xml") !== -1) {
-                    console.log("El recurso es un documento XML");
-                } else {
-                    console.log("El recurso es un documento desconocido");
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-        $(function () {
-            $("#json").JSONView(json);
-
-            $("#json-collapsed").JSONView(json, { collapsed: true, nl2br: true, recursive_collapser: true });
-
-        });
-
-
-
-
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             // Ejercicio 3
@@ -249,8 +197,18 @@ btmMostrarContenidos.addEventListener("click", function () {
         xhr.onload = function () {
             // Ejercicio 2
             if (xhr.readyState == 4 && xhr.status == 200) {
-                this.getResponseHeader("Content-Type");
-                document.querySelector("#contenidos").textContent = xhr.responseText;
+                if (this.getResponseHeader("Content-Type").search("application/json") !== -1) {                
+                    console.log("El recurso es un documento JSON");
+                    let response_json = JSON.parse(this.responseText);
+                    document.querySelector("#contenidos").classList.add("response_json");
+                    $(function () {
+                        $(".response_json").JSONView(response_json);
+                    });
+                } else {
+                    console.log("El recurso es un documento HTML");
+                    document.querySelector("#contenidos").classList.remove("response_json");
+                    document.querySelector("#contenidos").textContent = xhr.responseText;
+                }
             }
             // Ejercicio 4
             document.querySelector("#cabeceras").innerHTML = this.getAllResponseHeaders();
@@ -262,44 +220,40 @@ btmMostrarContenidos.addEventListener("click", function () {
         xhr.open("GET", url, true);
         xhr.send();
     }
-
-
-
 });
 
 
-
-// btmMostrarContenidos.addEventListener("click", function () {
-//     let url = document.querySelector("#recurso").value;
-//     document.querySelector("#contenidos").textContent = "";
-//     document.querySelector("#cabeceras").innerHTML = "";
-//     if (!urlCheck(url)) {
-//         alert("La url no es válida");
-//         document.querySelector("#contenidos").textContent = "";
-//     } else {
-//         let xhr = new XMLHttpRequest();
-//         xhr.onreadystatechange = function () {
-//             // Ejercicio 4
-//             if (xhr.readyState == 4 && xhr.status == 200) {
-//                 document.querySelector("#contenidos").textContent = xhr.responseText;
-//             }
-//             // Ejercicio 3
-//             document.querySelector("#estados").innerHTML = "(" + strFecha() + "):<b>"
-//                 + strEstado(xhr.readyState) + "</b> " + url + "<br>" + document.querySelector("#estados").innerHTML;
-//         };
-//         xhr.onload = function () {
-//             // Ejercicio 4
-//             document.querySelector("#cabeceras").innerHTML = this.getAllResponseHeaders();
-//             // Ejercicio 5
-//             document.querySelector("#codigo").innerHTML = "(" + strFecha() + "):<b>"
-//                 + xhr.status + " " + xhr.statusText + "</b> "+url+"<br>"
-//                 + document.querySelector("#codigo").innerHTML;
-//         };
-//         xhr.open("GET", url, true);
-//         xhr.send();
-//     }
-// });
-
+/* btmMostrarContenidos.addEventListener("click", function () {
+    let url = document.querySelector("#recurso").value;
+    document.querySelector("#contenidos").textContent = "";
+    document.querySelector("#cabeceras").innerHTML = "";
+    if (!urlCheck(url)) {
+        alert("La url no es válida");
+        document.querySelector("#contenidos").textContent = "";
+    } else {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            // Ejercicio 4
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.querySelector("#contenidos").textContent = xhr.responseText;
+            }
+            // Ejercicio 3
+            document.querySelector("#estados").innerHTML = "(" + strFecha() + "):<b>"
+                + strEstado(xhr.readyState) + "</b> " + url + "<br>" + document.querySelector("#estados").innerHTML;
+        };
+        xhr.onload = function () {
+            // Ejercicio 4
+            document.querySelector("#cabeceras").innerHTML = this.getAllResponseHeaders();
+            // Ejercicio 5
+            document.querySelector("#codigo").innerHTML = "(" + strFecha() + "):<b>"
+                + xhr.status + " " + xhr.statusText + "</b> "+url+"<br>"
+                + document.querySelector("#codigo").innerHTML;
+        };
+        xhr.open("GET", url, true);
+        xhr.send();
+    }
+});
+ */
 
 /**************************************************************
  * Funciones auxiliares
