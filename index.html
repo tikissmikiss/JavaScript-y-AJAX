@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <meta charset='utf-8'>
@@ -7,6 +7,9 @@
     <title>Actividad JavaScript</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="lib\jsonview\jquery.jsonview.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="lib\jsonview\jquery.jsonview.js"></script>
 
 </head>
 
@@ -15,7 +18,7 @@
         <h1>LABORATORIO: TECNOLOGÍAS JAVASCRIPT Y AJAX</h1>
     </header>
 
-    <div role-accion="contenedor_main" id="contenido" name="contenido" class="contenido">
+    <div name="contenido" class="contenido">
         <!-- Menu superior -->
         <div class="menu-actividad">
             <button class="menu-item activo" id="btnInicio"></button>
@@ -24,141 +27,148 @@
         </div>
 
         <!-- Contenedor principal dinámico -->
-        <div id="main-contenido" name="main-contenido"></div>
+        <div id="main-contenido" name="main-contenido">
 
-        <!-- Enunciado Actividad -->
-        <div id="enunciado" name="enunciado" class="no-visible">
-            <h2>Laboratorio. Tecnologías JavaScript y AJAX</h2>
+            <!-- Enunciado Actividad -->
+            <div id="enunciado" name="enunciado" class="no-visible seccion">
+                <h2>Laboratorio. Tecnologías JavaScript y AJAX</h2>
 
-            <h3>Objetivos</h3>
+                <h3>Objetivos</h3>
 
-            <p>En esta actividad se pretende poner en práctica los conocimientos adquiridos de las tecnologías JS y
-                AJAX.
-            </p>
+                <p>En esta actividad se pretende poner en práctica los conocimientos adquiridos de las tecnologías JS y
+                    AJAX.
+                </p>
 
-            <h3>Descripción del laboratorio</h3>
+                <h3>Descripción del laboratorio</h3>
 
-            <p>Se deberán resolver los ejercicios indicados a continuación. Para ello, se hará uso de la página web
-                proporcionada (fichero HTML+CSS):</p>
+                <p>Se deberán resolver los ejercicios indicados a continuación. Para ello, se hará uso de la página web
+                    proporcionada (fichero HTML+CSS):</p>
 
-            <h4>JavaScript</h4>
-            <ol>
-                <li>Detectar si la cadena de entrada en un palíndromo.</li>
-                <li>Escribe un programa que pida dos números y escriba en la pantalla cual es el mayor.</li>
-                <li>Escribe un programa que pida una frase y escriba las vocales que aparecen.</li>
-                <li>Escribe un programa que pida una frase y escriba cuántas veces aparecen cada una de las vocales.
-                </li>
-            </ol>
-            <h4>AJAX. A partir de la página web proporcionada, se pide añadir el código necesario para que:</h4>
-            <ol>
-                <li>Al cargar la página, el cuadro de texto debe mostrar por defecto la URL de la propia página.</li>
-                <li>Al pulsar el botón Mostrar Contenidos, se debe descargar mediante peticiones AJAX el contenido
-                    correspondiente a la URL introducida por el usuario. El contenido de la respuesta recibida del
-                    servidor en se debe mostrar en la zona de Contenidos del archivo.</li>
-                <li>En la zona Estados de la petición se debe mostrar en todo momento el estado en el que se encuentra
-                    la petición (no iniciada, cargando, completada, etc.).</li>
-                <li>Mostrar el contenido de todas las cabeceras de la respuesta del servidor en la zona Cabeceras HTTP
-                    de la respuesta del servidor.</li>
-                <li>Mostrar el código y texto de la respuesta del servidor en la zona Código de estado.</li>
-            </ol>
-        </div>
-
-        <!-- Ejercicios JavaScript -->
-        <div id="ejercicios-js" name="ejercicios-js" class="no-visible">
-            <h2>Ejercicios JavaScript</h2>
-
-            <!-- Ejercicio 1 -->
-            <div class="ejercicio">
-                <h3>Ejercicio 1:<p class="enunciado">Detectar si la cadena de entrada es un palíndromo.</p>
-                </h3>
-                <div>
-                    <!-- <p class="enunciado">Detectar si la cadena de entrada es un palíndromo.</p> -->
-                    <p>
-                        <label for="txtPalindromo">Ingrese un texto:</label>
-                        <input type="text" id="txtPalindromo" name="txtPalindromo" placeholder="Ingrese un texto">
-                    </p>
-                    <p><span>Out: </span><span class="output" id="output-palindromo"
-                            name="output-palindromo"></span></p>
-                </div>
+                <h4>JavaScript</h4>
+                <ol>
+                    <li>Detectar si la cadena de entrada en un palíndromo.</li>
+                    <li>Escribe un programa que pida dos números y escriba en la pantalla cual es el mayor.</li>
+                    <li>Escribe un programa que pida una frase y escriba las vocales que aparecen.</li>
+                    <li>Escribe un programa que pida una frase y escriba cuántas veces aparecen cada una de las vocales.
+                    </li>
+                </ol>
+                <h4>AJAX. A partir de la página web proporcionada, se pide añadir el código necesario para que:</h4>
+                <ol>
+                    <li>Al cargar la página, el cuadro de texto debe mostrar por defecto la URL de la propia página.
+                    </li>
+                    <li>Al pulsar el botón Mostrar Contenidos, se debe descargar mediante peticiones AJAX el contenido
+                        correspondiente a la URL introducida por el usuario. El contenido de la respuesta recibida del
+                        servidor en se debe mostrar en la zona de Contenidos del archivo.</li>
+                    <li>En la zona Estados de la petición se debe mostrar en todo momento el estado en el que se
+                        encuentra
+                        la petición (no iniciada, cargando, completada, etc.).</li>
+                    <li>Mostrar el contenido de todas las cabeceras de la respuesta del servidor en la zona Cabeceras
+                        HTTP
+                        de la respuesta del servidor.</li>
+                    <li>Mostrar el código y texto de la respuesta del servidor en la zona Código de estado.</li>
+                </ol>
             </div>
 
-            <!-- Ejercicio 2 -->
-            <div class="ejercicio">
-                <h3>Ejercicio 2:<p class="enunciado">Escribe un programa que pida dos números y escriba en la pantalla
-                        cual es el mayor.</p>
-                </h3>
-                <div>
-                    <p>
-                        Ingrese un número en cada campo:
-                    </p>
-                    <p id="ejercicio2-js">
-                        <input type="number" id="txtNumero1" name="txtNumero1" placeholder="número">
-                        <span id="simbolo-mayor-menor"> -?- </span>
-                        <input type="number" id="txtNumero2" name="txtNumero2" placeholder="número">
-                    </p>
-                    <p><span>Out: </span><span class="output" id="output-numero-mayor"
-                            name="output-numero-mayor"></span></p>
+            <!-- Ejercicios JavaScript -->
+            <div id="ejercicios-js" name="ejercicios-js" class="no-visible seccion">
+                <h2>Ejercicios JavaScript</h2>
+
+                <!-- Ejercicio 1 -->
+                <div class="ejercicio">
+                    <h3>Ejercicio 1:<p class="enunciado">Detectar si la cadena de entrada es un palíndromo.</p>
+                    </h3>
+                    <div>
+                        <!-- <p class="enunciado">Detectar si la cadena de entrada es un palíndromo.</p> -->
+                        <p>
+                            <label for="txtPalindromo">Ingrese un texto:</label>
+                            <input type="text" id="txtPalindromo" name="txtPalindromo" placeholder="Ingrese un texto">
+                        </p>
+                        <p><span>Out: </span><span class="output" id="output-palindromo"
+                                name="output-palindromo"></span></p>
+                    </div>
                 </div>
+
+                <!-- Ejercicio 2 -->
+                <div class="ejercicio">
+                    <h3>Ejercicio 2:<p class="enunciado">Escribe un programa que pida dos números y escriba en la
+                            pantalla
+                            cual es el mayor.</p>
+                    </h3>
+                    <div>
+                        <p>
+                            Ingrese un número en cada campo:
+                        </p>
+                        <p id="ejercicio2-js">
+                            <input type="number" id="txtNumero1" name="txtNumero1" placeholder="número">
+                            <span id="simbolo-mayor-menor"> -?- </span>
+                            <input type="number" id="txtNumero2" name="txtNumero2" placeholder="número">
+                        </p>
+                        <p><span>Out: </span><span class="output" id="output-numero-mayor"
+                                name="output-numero-mayor"></span></p>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 3 -->
+                <div class="ejercicio">
+                    <h3>Ejercicio 3:<p class="enunciado">Escribe un programa que pida una frase y escriba las vocales
+                            que
+                            aparecen.</p>
+                    </h3>
+                    <div>
+                        <p>
+                            <label for="txtMuestraVocales">Ingrese un texto:</label>
+                            <input type="text" id="txtMuestraVocales" name="txtMuestraVocales"
+                                placeholder="Ingrese un texto">
+                        </p>
+                        <p>
+                            <span>Out: </span><span class="output" id="output-muestra-vocales"
+                                name="output-muestra-vocales"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 4 -->
+                <div class="ejercicio">
+                    <h3>Ejercicio 4:<p class="enunciado">Escribe un programa que pida una frase y escriba cuántas veces
+                            aparecen cada una de las vocales.</p>
+                    </h3>
+                    <div>
+                        <p>
+                            <label for="txtCuentaVocales">Ingrese un texto:</label>
+                            <input type="text" id="txtCuentaVocales" name="txtCuentaVocales"
+                                placeholder="Ingrese un texto">
+                        </p>
+                        <p><span>Out: </span><span class="output" id="output-cuenta-vocales"
+                                name="output-cuenta-vocales"></span>
+                        </p>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Ejercicio 3 -->
-            <div class="ejercicio">
-                <h3>Ejercicio 3:<p class="enunciado">Escribe un programa que pida una frase y escriba las vocales que
-                        aparecen.</p>
-                </h3>
-                <div>
-                    <p>
-                        <label for="txtMuestraVocales">Ingrese un texto:</label>
-                        <input type="text" id="txtMuestraVocales" name="txtMuestraVocales"
-                            placeholder="Ingrese un texto">
-                    </p>
-                    <p>
-                        <span>Out: </span><span class="output" id="output-muestra-vocales"
-                            name="output-muestra-vocales"></span>
-                    </p>
-                </div>
-            </div>
+            <!-- Ejercicios AJAX -->
+            <div id="ejercicios-ajax" name="ejercicios-ajax" class="no-visible seccion">
+                <form action="#" id="ajax-url">
+                    URL:
+                    <input type="text" id="recurso" size="70" value="Mostrar contenidos"/>
+                    <input type="button" id="enviar" value="Mostrar contenidos" />
+                </form>
+                <div id="contenido">
+                    <div id="principal">
+                        <h2>Contenidos del archivo:</h2>
+                        <div id="contenidos"></div>
 
-            <!-- Ejercicio 4 -->
-            <div class="ejercicio">
-                <h3>Ejercicio 4:<p class="enunciado">Escribe un programa que pida una frase y escriba cuántas veces
-                        aparecen cada una de las vocales.</p>
-                </h3>
-                <div>
-                    <p>
-                        <label for="txtCuentaVocales">Ingrese un texto:</label>
-                        <input type="text" id="txtCuentaVocales" name="txtCuentaVocales" placeholder="Ingrese un texto">
-                    </p>
-                    <p><span>Out: </span><span class="output" id="output-cuenta-vocales"
-                            name="output-cuenta-vocales"></span>
-                    </p>
-                </div>
-            </div>
+                        <h2>Cabeceras HTTP de la respuesta del servidor:</h2>
+                        <div id="cabeceras"></div>
+                    </div>
 
-        </div>
+                    <div id="secundario">
+                        <h2>Estados de la petición:</h2>
+                        <div id="estados"></div>
 
-        <!-- Ejercicios AJAX -->
-        <div id="ejercicios-ajax" name="ejercicios-ajax" class="no-visible">
-            <form action="#">
-                URL:
-                <input type="text" id="recurso" size="70" />
-                <input type="button" id="enviar" value="Mostrar contenidos" />
-            </form>
-            <div id="contenido">
-                <div id="principal">
-                    <h2>Contenidos del archivo:</h2>
-                    <div id="contenidos"></div>
-
-                    <h2>Cabeceras HTTP de la respuesta del servidor:</h2>
-                    <div id="cabeceras"></div>
-                </div>
-
-                <div id="secundario">
-                    <h2>Estados de la petición:</h2>
-                    <div id="estados"></div>
-
-                    <h2>Código de estado:</h2>
-                    <div id="codigo"></div>
+                        <h2>Código de estado:</h2>
+                        <div id="codigo"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -166,6 +176,6 @@
     </div>
 
 </body>
-<script type="text/javascript" src="js/codeJavaScript.js"></script>
+<script type="text/javascript" src="js/javaScript.js"></script>
 
 </html>

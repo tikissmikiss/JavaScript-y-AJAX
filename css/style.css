@@ -1,6 +1,5 @@
 * {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /* max-width: 1080px; */
 }
 
 body {
@@ -14,11 +13,10 @@ body {
     background-attachment: fixed;
     background-position: left;
     margin-right: 0;
-    /* margin: 1em  1em  0  1em; */
 }
 
 h2 {
-    margin-bottom: 0;
+    margin-bottom: 3px;
     font-size: 1.2em;
 }
 
@@ -29,12 +27,17 @@ h2 {
     background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNDgiIGhlaWdodD0iNDgiCnZpZXdCb3g9IjAgMCA0OCA0OCIKc3R5bGU9IiBmaWxsOiNmZmZmZmY7Ij48cGF0aCBkPSJNIDIzLjk1MTE3MiA0IEEgMS41MDAxNSAxLjUwMDE1IDAgMCAwIDIzLjA3MjI2NiA0LjMyMjI2NTYgTCA4Ljg1OTM3NSAxNS41MTk1MzEgQyA3LjA1NTQ3NzIgMTYuOTQxMTYzIDYgMTkuMTEzNTA2IDYgMjEuNDEwMTU2IEwgNiA0MC41IEMgNiA0MS44NjM1OTQgNy4xMzY0MDU4IDQzIDguNSA0MyBMIDE4LjUgNDMgQyAxOS44NjM1OTQgNDMgMjEgNDEuODYzNTk0IDIxIDQwLjUgTCAyMSAzMC41IEMgMjEgMzAuMjA0OTU1IDIxLjIwNDk1NSAzMCAyMS41IDMwIEwgMjYuNSAzMCBDIDI2Ljc5NTA0NSAzMCAyNyAzMC4yMDQ5NTUgMjcgMzAuNSBMIDI3IDQwLjUgQyAyNyA0MS44NjM1OTQgMjguMTM2NDA2IDQzIDI5LjUgNDMgTCAzOS41IDQzIEMgNDAuODYzNTk0IDQzIDQyIDQxLjg2MzU5NCA0MiA0MC41IEwgNDIgMjEuNDEwMTU2IEMgNDIgMTkuMTEzNTA2IDQwLjk0NDUyMyAxNi45NDExNjMgMzkuMTQwNjI1IDE1LjUxOTUzMSBMIDI0LjkyNzczNCA0LjMyMjI2NTYgQSAxLjUwMDE1IDEuNTAwMTUgMCAwIDAgMjMuOTUxMTcyIDQgeiBNIDI0IDcuNDEwMTU2MiBMIDM3LjI4NTE1NiAxNy44NzY5NTMgQyAzOC4zNjkyNTggMTguNzMxMzIyIDM5IDIwLjAzMDgwNyAzOSAyMS40MTAxNTYgTCAzOSA0MCBMIDMwIDQwIEwgMzAgMzAuNSBDIDMwIDI4LjU4NTA0NSAyOC40MTQ5NTUgMjcgMjYuNSAyNyBMIDIxLjUgMjcgQyAxOS41ODUwNDUgMjcgMTggMjguNTg1MDQ1IDE4IDMwLjUgTCAxOCA0MCBMIDkgNDAgTCA5IDIxLjQxMDE1NiBDIDkgMjAuMDMwODA3IDkuNjMwNzQxMiAxOC43MzEzMjIgMTAuNzE0ODQ0IDE3Ljg3Njk1MyBMIDI0IDcuNDEwMTU2MiB6Ij48L3BhdGg+PC9zdmc+') 50% 50% no-repeat;
     background-size: 65%;
 }
+
 #recurso,
 #enviar {
     padding: .3em;
     font-size: 1.2em;
+    margin-bottom: 1em;
 }
 
+#recurso {
+    width: 95%;
+}
 #principal {
     float: left;
     width: 68%;
@@ -47,22 +50,28 @@ h2 {
 
 #contenidos {
     min-height: 200px;
-    max-height: 600px;
-    overflow: scroll;
+    max-height: 400px;
+    overflow: auto;
+    white-space: pre;
 }
 
 #estados {
     min-height: 200px;
-    max-height: 600px;
+    max-height: 400px;
+    overflow: auto;
+    font-size: 0.8em;
 }
 
 #cabeceras {
     min-height: 200px;
+    white-space: pre;
 }
 
 #codigo {
     min-height: 200px;
-    font-size: 1.5em;
+    max-height: 400px;
+    overflow: auto;
+    font-size: 0.8em;
 }
 
 
@@ -77,7 +86,6 @@ header {
     width: 100%;
     padding-top: 1em;
     padding-left: 1em;
-    /* padding-right: 1em; */
     color: #FAFAFA;
 }
 
@@ -98,19 +106,10 @@ header {
     box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 26%),
         0 2px 10px 2px rgb(0 0 0 / 32%);
     align-content: center;
-    width: 100;
+    width: 100%;
     top: 0px;
     box-sizing: inherit;
     z-index: 1;
-    /* background-color: #282A35; */
-    /* color: #f1f1f1; */
-    /* width: 100%; */
-    /* margin-left: 1em; */
-    /* letter-spacing: 1px; */
-    /* font-family: 'Source Sans Pro', */
-    /* sans-serif; */
-    /* position: relative; */
-    /* top: 0px; */
     flex-direction: column;
     align-items: stretch;
     flex-wrap: nowrap;
@@ -171,7 +170,13 @@ header {
     color: #ffffff;
 }
 
+#main-contenido {
+    padding: 0 5em 2em 2em;
+}
 
+#ajax-url {
+    margin-top: 1em;
+}
 
 .menu-actividad {
     -webkit-text-size-adjust: 100%;
@@ -246,8 +251,8 @@ input[type="number"],
     border-radius: 5px;
     box-shadow: inset 0px 2px 5px 0px rgb(0 0 0 / 26%), inset 0 2px 10px 2px rgb(0 0 0 / 32%);
     padding: 3px 6px;
-    height: 1.5em;
-    font-size: 1em;
+    /* height: 1.5em; */
+    /* font-size: 1em; */
     font-family: 'Source Sans Pro',
         sans-serif;
     color: #333;
@@ -256,7 +261,7 @@ input[type="number"],
     box-sizing: border-box;
     /* vertical-align: middle; */
     outline: 0;
-    white-space: normal;
+    /* white-space: normal; */
 }
 
 input[type="number"] {
@@ -318,3 +323,4 @@ input[type="text"i] {
 .no-visible {
     display: none;
 }
+
