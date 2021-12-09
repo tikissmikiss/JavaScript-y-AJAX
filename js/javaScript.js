@@ -172,7 +172,7 @@ url_input.addEventListener("change", function () { // Validacion url
         alert("Introduzca una url valida");
 });
 
-document.querySelector("#recurso").setAttribute("value", document.URL + "assets/ejemplo.json");
+document.querySelector("#recurso").setAttribute("value", document.URL.split("?")[0] + "assets/ejemplo.json");
 
 
 /**************************************************************
@@ -288,8 +288,11 @@ function countVowels(word) {
     return vowels;
 }
 
+
+// https://gorest.co.in/public/v1/users?page=2
+// https://regex101.com/r/5A7Fg5/1
 function urlCheck(url) {
-    var url_regex = new RegExp(/^(https?:\/\/)?([\da-z\.-]+)(:[\d]{1,5}\/)?([\/\w\.-]*)*\/?(\?\#[\/\w \.-]*)?[\s]*?$/gi);
+    var url_regex = new RegExp(/^(https?:\/\/)?([\da-z\.-]+)(:[\d]{1,5}\/?)?([\/\w\.-]*)*(\?.*)?\s*$/i);
     return url.search(url_regex) !== -1;
 }
 
