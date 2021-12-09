@@ -40,7 +40,8 @@ h2 {
 
 #principal {
     /* float: left; */
-    width: 90%;
+    width: 60%;
+    min-width: 220px;
     margin-right: 1em;
     height: 100%;
 }
@@ -91,7 +92,7 @@ h2 {
     align-content: stretch;
     justify-content: space-between;
     align-items: stretch;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 #ejercicios-ajax {
