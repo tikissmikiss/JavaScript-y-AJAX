@@ -18,7 +18,6 @@
  * 5.	Mostrar el código y texto de la respuesta del servidor en la zona Código de estado.
  */
 
-// const bloqueMostrar = document.getElementById("main-contenido");
 const enunciado = document.getElementById("enunciado");
 const ejerciciosJS = document.getElementById("ejercicios-js");
 const ejerciciosAJAX = document.getElementById("ejercicios-ajax");
@@ -74,11 +73,20 @@ function toggleMenu(item_menu, contenido_mostrar) {
 const txtPalindromo = document.getElementById("txtPalindromo");
 const output_Ej1JS = document.getElementById("output-palindromo");
 addListeners(txtPalindromo, ejercicio1);
-txtPalindromo.setAttribute("value", "Roma ni se conoce sin oro ni se conoce sin amor");
+txtPalindromo.setAttribute("value", "Roma ni se conoce sin oro, ni se conoce sin amor");
 ejercicio1();
+
+document.querySelectorAll(".ej-palindromo").forEach(function (element) {
+    element.addEventListener("click", function (in_palindromo = txtPalindromo) {
+        txtPalindromo.value =  this.innerHTML;
+        ejercicio1();
+    });
+});
+
 
 function ejercicio1() {
     let cadena = txtPalindromo.value;
+    output_Ej1JS.innerHTML = "";
     if (cadena.length < 2) {
         output_Ej1JS.innerHTML = "El texto debe de tene más de 1 caracteres";
     } else if (isPalíndromo(cadena)) {
@@ -267,7 +275,7 @@ function addListeners(inText, func) {
 }
 
 function unifyString(str) {
-    return str.toLowerCase().replace(/\s+/g, '')
+    return str.toLowerCase().replace(/[\s\,;'\.]+/g, '')
         .replace(/[áàäâ]/g, 'a')
         .replace(/[éëèê]/g, 'e')
         .replace(/[íïìî]/g, 'i')
