@@ -73,7 +73,9 @@ function toggleMenu(item_menu, contenido_mostrar) {
  **************************************************************/
 const txtPalindromo = document.getElementById("txtPalindromo");
 const output_Ej1JS = document.getElementById("output-palindromo");
-addListeners(txtPalindromo, ejercicio1)
+addListeners(txtPalindromo, ejercicio1);
+txtPalindromo.setAttribute("value", "Roma ni se conoce sin oro ni se conoce sin amor");
+ejercicio1();
 
 function ejercicio1() {
     let cadena = txtPalindromo.value;
