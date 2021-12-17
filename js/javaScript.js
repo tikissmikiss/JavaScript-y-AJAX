@@ -55,7 +55,6 @@ function toggleMenu(item_menu, contenido_mostrar) {
         }
     }
 
-    let a = document.querySelectorAll(".seccion");
     for (let i of document.querySelectorAll(".seccion")) {
         if (i !== contenido_mostrar) {
             i.classList.add("no-visible");
@@ -63,7 +62,6 @@ function toggleMenu(item_menu, contenido_mostrar) {
             i.classList.remove("no-visible");
         }
     }
-
 }
 
 
@@ -168,7 +166,7 @@ function ejercicio4() {
     output_Ej4JS.innerHTML = "";
     let result = countVowels(cadena);
     for (let i = 0; i < result.length; i++) {
-        output_Ej4JS.innerHTML += "<b>" + result[i].letter + "</b> = " + result[i].count + "; ";
+        output_Ej4JS.innerHTML += "<b>" + result[i].letter + "</b> =" + result[i].count + ";&nbsp;";
     }
 }
 
